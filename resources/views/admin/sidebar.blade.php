@@ -11,6 +11,19 @@
                         Dashboard
                     </a>
                 </li>
+
+                <li role="presentation">
+                    <a href="{{ url('/admin/role') }}">
+                        Role
+                    </a>
+                </li>
+
+                <li role="presentation">
+                    <a href="{{ url('/admin/permission') }}">
+                        Permission
+                    </a>
+                </li>
+
             </ul>
         </div>
     </div>
