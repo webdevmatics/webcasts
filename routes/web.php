@@ -17,7 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::group(['middleware'=>'role:super-admin'],function(){
+	Route::view('/admin','admin.dashboard');
+	Route::resource('admin/permission', 'Admin\\PermissionController');
+	Route::resource('admin/role', 'Admin\\RoleController');
+	Route::resource('admin/user', 'Admin\\UserController');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('admin/permission', 'Admin\\PermissionController');
-Route::resource('admin/role', 'Admin\\RoleController');
+
