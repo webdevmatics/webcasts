@@ -1,30 +1,30 @@
-@extends('layout.front')
-
+@extends('layouts.app')
 @section('content')
+	<div class="container">
+		<div class="row">
+			
+			<div class="col-md-8 col-md-offset-2">
+					@foreach ($posts as $post)
 
-	@foreach ($posts as $post)
-		
-		@hasanyrole('subscriber|super-admin')
+						@hasanyrole('subscriber|super-admin')
+							@include('_blog-box')
+						@else
+							@if(empty($post->is_premium))
+								@include('_blog-box')
+							@else
+									<div class="panel panel-info">
+										<div class="panel-heading">
+											<h3 class="panel-title">{{$post->title}}</h3>
+										</div>
+										<div class="panel-body">
+											<p><a href="/subscribe">Subscribe Now</a> to view this post</p>
+										</div>
+									</div>
+							@endif
+						@endhasanyrole
 
-		<div class="panel panel-default">
-				<h3>{{$post->title}}</h3>
-				<div class="panel-body">
-					{{$post->content}}
-				</div>
-			</div>	
-@else
-	@if(empty($post->is_premium))
-		<div class="panel panel-default">
-				<h3>{{$post->title}}</h3>
-				<div class="panel-body">
-					{{$post->content}}
-				</div>
-			</div>	
-
-			@else
-			<h4>you need to be subscriber</h4>
-		@endif
-			@endrole
-	@endforeach
-
+					@endforeach
+			</div>
+		</div>	
+	</div>
 @endsection

@@ -9,7 +9,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-    	$posts=Post::free()->get();
+    	$posts=Post::all();
     	return view('blog.index',compact('posts'));
     }
 

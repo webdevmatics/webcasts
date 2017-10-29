@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::redirect('/','/blog');
+
 Auth::routes();
 
 Route::group(['middleware'=>['role:super-admin','auth']],function(){
@@ -32,5 +34,7 @@ Route::group(['middleware'=>['auth']],function(){
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/blog', 'BlogController@index')->name('blog.index');
 
+Route::get('/subscribe','SubscriptionController@index');
+Route::post('/subscribe','SubscriptionController@store');
 
 
