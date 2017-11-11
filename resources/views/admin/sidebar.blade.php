@@ -30,6 +30,12 @@
                     </a>
                 </li>
 
+                 <li role="presentation">
+                    <a href="{{ url('/admin/posts') }}">
+                        Posts
+                    </a>
+                </li>
+
             </ul>
         </div>
     </div>
