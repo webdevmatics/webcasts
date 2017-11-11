@@ -10,6 +10,8 @@
                 <form action="/subscribe" method="POST">
                     {{csrf_field()}}
 
+                    <input type="text" name="coupon">
+
                   <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="pk_test_GryUHqXe48kgNc75J2BovmeN"
